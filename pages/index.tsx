@@ -6,12 +6,10 @@ import { useSession } from "next-auth/react";
 export default function Index() {
   const { data: session, status } = useSession();
   const isAuthenticated = status === "authenticated";
-  console.log({ isAuthenticated });
 
   const testApiRoute = async () => {
     const response = await fetch("/api/hello");
     const data = await response.json();
-    console.log({ data });
   };
 
   return (

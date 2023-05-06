@@ -36,7 +36,6 @@ export const authOptions = {
     // JWT is called when a JWT is created (i.e. at sign in)
     async jwt({ token, account }) {
       if (account?.access_token) {
-        console.log({ account });
         token.accessToken = account.access_token;
       }
 
