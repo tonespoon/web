@@ -1,15 +1,12 @@
 import { getServerSession } from "next-auth";
-
 import { authOptions } from "./auth/[...nextauth]";
-import UserSignedInWorker from "./workers/userSignedIn";
+import { NextApiRequest, NextApiResponse } from "next";
 
-export default async function TestApiRoute(req, res) {
+export default async function TestApiRoute(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
   const session = await getServerSession(req, res, authOptions);
-
-  await UserSignedInWorker.enqueue(
-    { message: "Hello can you do this thing for me?", session },
-    {} // scheduling options
-  );
 
   return res.send({ ok: true });
 }
