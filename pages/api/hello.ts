@@ -1,13 +1,15 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { getServerSession } from "next-auth";
 
-type Data = {
-  name: string
-}
+import { authOptions } from "./auth/[...nextauth]";
+import UserSignedInWorker from "./workers/userSignedIn";
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+export default async function TestApiRoute(req, res) {
+  const session = await getServerSession(req, res, authOptions);
+
+  await UserSignedInWorker.enqueue(
+    { message: "Hello can you do this thing for me?", session },
+    {} // scheduling options
+  );
+
+  return res.send({ ok: true });
 }
