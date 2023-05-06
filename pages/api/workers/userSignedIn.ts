@@ -9,5 +9,5 @@ export default verifySignature(handler);
 
 // TODO - Work out what types are here because they are missing in the lib :D
 export const config = {
-  api: { bodyParser: true },
+  api: { bodyParser: false },
 };
