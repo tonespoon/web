@@ -1,0 +1,13 @@
+[allowlist]
+description = "Allowlisted files"
+files = ['''^\.gitleaks.toml$''']
+
+[[rules]]
+description = "AWS keys"
+regex = '''(A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}'''
+tags = ["key", "AWS"]
+
+[[rules]]
+description = "Slack API token"
+regex = '''xox[baprs]-([0-9a-zA-Z]{10,48})'''
+tags = ["key", "Slack"]

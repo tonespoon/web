@@ -1,0 +1,20 @@
+name: Gitleaks PR Check
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+jobs:
+  gitleaks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+
+      - name: Run Gitleaks
+        uses: zricethezav/gitleaks-action@v2.3.2
+        with:
+          args: --verbose --branch=${{ github.event.pull_request.head.ref }} --repo-path=. --commit-from=${{ github.event.pull_request.base.sha }} --commit-to=${{ github.event.pull_request.head.sha }}
