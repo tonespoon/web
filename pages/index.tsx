@@ -1,6 +1,6 @@
 import { reviews } from "@/mocks/reviews";
-import { Splash } from "./components/Splash";
-import { ArtworkGrid } from "./components/ArtworkGrid";
+import { Splash } from "@/components/Splash";
+import { ArtworkGrid } from "../components/ArtworkGrid";
 import { useSession } from "next-auth/react";
 
 export default function Index() {

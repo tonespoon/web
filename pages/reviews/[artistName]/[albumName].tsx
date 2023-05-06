@@ -1,8 +1,8 @@
 import { Review, reviews } from "@/mocks/reviews";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { ReviewSummary } from "../components/ReviewSummary";
-import { formatReviewDate } from "../util/formatReviewDate";
-import { ShareToStory } from "../components/ShareToStory";
+import { ReviewSummary } from "@/components/ReviewSummary";
+import { formatReviewDate } from "@/util/formatReviewDate";
+import { ShareToStory } from "@/components/ShareToStory";
 
 type ReviewPageProps = { review: Review };
 
